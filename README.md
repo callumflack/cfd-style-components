@@ -1,12 +1,16 @@
 # CFd style components
 
-We use Tailwind for:
+## A work in progress…
+
+We use [Tailwind](https://tailwindcss.com/docs/installation) for:
 
 * easy, writeable utilities with a light footprint
 
 * outsourcing the best way to manage atomic CSS (which is the best way to write CSS) to a great community of constant open-source improvement
 
-* X
+* it feels like we write less custom code when we use it
+
+* the config file allows us to customise many things quickly, including CSS reductions during production
 
 Apart from Tailwind, we also rely on these component abstractions for UI patterns we constantly use. This helps us to:
 
