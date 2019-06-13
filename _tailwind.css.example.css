@@ -24,6 +24,7 @@
 @import "./theme/layout-container";
 @import "./theme/layout-column";
 @import "./theme/layout-media";
+@import "./theme/layout-transitions";
 
 /* CFd theme & custom components (per project) */
 /* @import "./theme/theme-modal"; */
