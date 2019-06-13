@@ -1,0 +1,11 @@
+/*
+
+  LINK
+  Todo: think this thru…
+
+*/
+
+.underline {
+  @apply inline-block border-b border-gray-500;
+  text-decoration: none !important;
+}

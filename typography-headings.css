@@ -1,0 +1,60 @@
+/*
+
+  Headings: customisable starter pack
+
+  Uses the responsiveScale settings from `typography-scale`
+
+ */
+
+.Heading,
+.Subheading
+.Markdown h2,
+.Markdown h3,
+.Metaheading {
+  @apply font-sans;
+}
+
+.Markdown h3,
+.Metaheading {
+  @apply font-bold text-black leading-normal;
+  font-size: calc(theme(fontSize.base) * var(--text-ratio));
+}
+
+.Markdown h2 {
+  @apply font-bold text-black leading-normal;
+  font-size: calc(theme(fontSize.lg) * var(--text-ratio));
+}
+
+.Subheading {
+  @apply font-bold text-black leading-snug;
+  font-size: calc(theme(fontSize.xl) * var(--text-ratio));
+}
+
+.Heading {
+  @apply leading-snug uppercase;
+  font-size: calc(theme(fontSize.3xl) * var(--text-ratio));
+}
+
+/* Markdown theme example */
+/* .Markdown h2 {} */
+
+/*
+
+  Titles
+
+ */
+
+.Display,
+.Title {
+  @apply font-serif text-black tracking-wide lowercase;
+}
+
+.Display {
+  @apply font-normal leading-title;
+  font-size: calc(theme(fontSize.7xl) * var(--title-ratio));
+}
+
+.Title {
+  @apply font-bold leading-title;
+  font-size: calc(theme(fontSize.5xl) * var(--title-ratio));
+}

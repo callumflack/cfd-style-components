@@ -1,0 +1,27 @@
+/*
+
+  Title example
+
+ */
+
+@font-face {
+    font-family:"Title";
+    src:
+      url("/../../fonts/Title-Regular.woff") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+}
+
+/*
+
+  Text example
+
+ */
+
+@font-face {
+    font-family:"Text";
+    src:
+      url("/../../fonts/Text-Regular.woff") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+}

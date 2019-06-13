@@ -1,0 +1,55 @@
+/*
+
+  Grid
+
+  To add: ability to alter breakpoint position
+  eg. /gallery on mobile
+
+*/
+.Grid {
+  @apply flex flex-wrap flex-col -m-4;
+}
+
+.Grid-item {
+  @apply block p-4;
+  /* @apply flex-grow; */
+}
+
+/* .Grid-item + .Grid-item, */
+/* .s-Grid {
+  @apply mt-3;
+} */
+
+.Grid--x-only {
+  @apply -mx-2 my-0;
+}
+
+.Grid--x-only > .Grid-item {
+  @apply px-2 py-0;
+}
+
+.Grid--x-only + .Grid--x-only {
+  @apply mt-6;
+}
+
+.Grid--sm {
+  @apply -m-2;
+}
+
+.Grid--sm > .Grid-item {
+  @apply p-2;
+}
+
+@screen sm {
+  .Grid {
+    @apply flex-row;
+  }
+
+  .Grid-item + .Grid-item {
+    @apply mt-0;
+  }
+
+  .s-Grid {
+    @apply mt-6
+  }
+}
