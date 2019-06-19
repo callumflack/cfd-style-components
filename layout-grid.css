@@ -2,54 +2,59 @@
 
   Grid
 
-  To add: ability to alter breakpoint position
-  eg. /gallery on mobile
+  Note:
+  * To occupy remaining space, add `.flex-grow`
 
 */
+
 .Grid {
-  @apply flex flex-wrap flex-col -m-4;
+  @apply flex flex-wrap flex-col;
+  margin: calc(-1 * theme(spacing.4) * var(--grid-ratio));
 }
 
 .Grid-item {
-  @apply block p-4;
-  /* @apply flex-grow; */
+  @apply block;
+  padding: calc(theme(spacing.4) * var(--grid-ratio));
 }
 
-/* .Grid-item + .Grid-item, */
-/* .s-Grid {
-  @apply mt-3;
-} */
+/* VARS */
 
-.Grid--x-only {
-  @apply -mx-2 my-0;
+.Grid--x {
+  @apply my-0;
+  margin: calc(-1 * theme(spacing.2) * var(--grid-ratio));
 }
 
-.Grid--x-only > .Grid-item {
-  @apply px-2 py-0;
-}
-
-.Grid--x-only + .Grid--x-only {
-  @apply mt-6;
+.Grid--x > .Grid-item {
+  @apply py-0;
+  padding: calc(theme(spacing.2) * var(--grid-ratio));
 }
 
 .Grid--sm {
-  @apply -m-2;
+  margin: calc(-1 * theme(spacing.2) * var(--grid-ratio));
 }
 
 .Grid--sm > .Grid-item {
-  @apply p-2;
+  padding: calc(theme(spacing.2) * var(--grid-ratio));
 }
 
 @screen sm {
   .Grid {
     @apply flex-row;
   }
+}
 
-  .Grid-item + .Grid-item {
-    @apply mt-0;
+/* SCALE */
+
+:root {
+  --grid-ratio: theme(responsiveScale.gridXs);
+}
+@screen sm {
+  :root {
+    --grid-ratio: theme(responsiveScale.gridSm);
   }
-
-  .s-Grid {
-    @apply mt-6
+}
+@screen lg {
+  :root {
+    --grid-ratio: theme(responsiveScale.gridMd);
   }
 }
