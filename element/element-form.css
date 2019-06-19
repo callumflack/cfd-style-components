@@ -45,18 +45,20 @@ select::-ms-expand {
 
 /*
   VALIDATION
+  1. Requires adding 2px key:value in tailwind.config spacing
+  2. Requires adding good & bad colors key:values in tailwind.config colors
 */
 
 .Form-validation {
   @apply font-medium justify-start w-full;
-  @apply text-white mt-2px;
+  @apply text-white mt-2px; /* 1 */
   @apply cursor-default;
 }
 .is-good {
-  @apply bg-form-good;
+  @apply bg-form-good; /* 2 */
 }
 .is-bad {
-  @apply bg-form-bad;
+  @apply bg-form-bad; /* 2 */
 }
 
 /*
