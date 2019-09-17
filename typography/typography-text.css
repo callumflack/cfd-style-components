@@ -2,12 +2,20 @@
 
   Text: customisable starter pack
 
-  Uses the responsiveScale settings from `typography-scale`
+  * Uses the responsiveScale settings from `theme-scale`
+  1. Apple kerning, from http://design.byform.co/
 
 */
 
 body {
   @apply antialiased text-text leading-normal;
+  @apply font-sans;
+  @apply bg-brand-bg;
+  font-feature-settings: "kern" 1,'ss01' 1,'ss02' 1,'ss03' 1,'ss04' 1; /* 1 */
+}
+
+::selection {
+  @apply bg-brand-highlight;
 }
 
 .Text--sm {

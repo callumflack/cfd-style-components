@@ -90,10 +90,11 @@ module.exports = {
         "serif",
       ],
       mono: [
+        "SFMono-Regular",
+        "Consolas",
+        "Liberation Mono",
         "Menlo",
         "Monaco",
-        "Consolas",
-        '"Liberation Mono"',
         '"Courier New"',
         "monospace",
       ],

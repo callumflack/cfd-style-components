@@ -5,22 +5,6 @@
 
 */
 
-/* SCALE */
-
-:root {
-  --block-size-ratio: theme(responsiveScale.blockXs);
-}
-@screen sm {
-  :root {
-    --block-size-ratio: theme(responsiveScale.blockSm);
-  }
-}
-@screen md {
-  :root {
-    --block-size-ratio: theme(responsiveScale.blockMd);
-  }
-}
-
 /* LG */
 
 .Block {

@@ -8,8 +8,9 @@
 
   Note: no inline button + button spacing is set. This is easier to handle at the theme or component level.
 
-  1. No margin reset needed, it's in Tailwind base. It's  also easier to override in theme or components w/ setting it here.
-  2. Responsive alignment of button text b/c every font has different leading settings. And sometimes it's padding-top not padding-bottom, so this is not a var.
+  1. avoid brwoser resets, inherit from the typography class.
+  2. No margin reset needed, it's in Tailwind base. It's  also easier to override in theme or components w/ setting it here.
+  3. Responsive alignment of button text b/c every font has different leading settings. And sometimes it's padding-top not padding-bottom, so this is not a var.
 
  */
 
@@ -49,14 +50,15 @@
   font-weight: var(--button-font-weight);
   height: var(--button-height);
   line-height: 1;
+  letter-spacing: inherit; /* 1 */
   justify-content: center;
-  /* margin: 0; */ /* 1 */
+  /* margin: 0; */ /* 2 */
   padding: 0 var(--button-padding-x);
   position: relative;
   text-decoration: none;
   text-transform: var(--button-font-case);
   user-select: none;
-  padding-bottom: calc((2 / 15) * 1em); /* 2 */
+  padding-bottom: calc((2 / 15) * 1em); /* 3 */
 }
 
 /*
@@ -118,12 +120,14 @@ button:disabled {
   --button-border-width: 0;
   --button-box-shadow-color: theme(colors.brand.blue);
   --button-font-weight: 400;
+  --input-placeholder-color: theme(colors.text);
   /* unlike buttons, inputs are full width */
-  @apply w-full;
+  @apply cursor-text w-full leading-normal;
 }
 
-.Input::placholder {
-  color: var(--input-placeholder-color); /* still dims it */
+.Input::placeholder {
+  @apply opacity-100; /* override Tailwind */
+  color: var(--input-placeholder-color);
 }
 
 /* in forms, make height & radius consistent for both inputs & buttons */
@@ -193,10 +197,15 @@ textarea.Input {
 }
 
 .ButtonComplex .Button--outline,
-.Button--outline {
-  --button-color: theme(colors.brand.primary);
+.Button--outline,
+.Button--invisible {
+  --button-color: theme(colors.text);
   --button-bg-color: transparent;
-  --button-bg-color-hover: var(--bg-color-hover);
+  --button-bg-color-hover: transparent;
+}
+
+.Button--invisible {
+  --button-border-color: transparent;
 }
 
 .Button--whiteOutline {

@@ -42,19 +42,3 @@
     @apply flex-row;
   }
 }
-
-/* SCALE */
-
-:root {
-  --grid-ratio: theme(responsiveScale.gridXs);
-}
-@screen sm {
-  :root {
-    --grid-ratio: theme(responsiveScale.gridSm);
-  }
-}
-@screen lg {
-  :root {
-    --grid-ratio: theme(responsiveScale.gridMd);
-  }
-}
