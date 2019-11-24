@@ -8,17 +8,14 @@
 
   Note: no inline button + button spacing is set. This is easier to handle at the theme or component level.
 
-  1. avoid brwoser resets, inherit from the typography class.
-  2. No margin reset needed, it's in Tailwind base. It's  also easier to override in theme or components w/ setting it here.
-  3. Responsive alignment of button text b/c every font has different leading settings. And sometimes it's padding-top not padding-bottom, so this is not a var.
+  1. No margin reset needed, it's in Tailwind base. It's  also easier to override in theme or components w/ setting it here.
+  2. Responsive alignment of button text b/c every font has different leading settings. And sometimes it's padding-top not padding-bottom, so this is not a var.
 
  */
 
-.Input,
-.Button {
+:root {
   --button-color: theme(colors.white);
-  --button-invert-color: theme(colors.brand.primary);
-
+  --button-invert-color: theme(colors.black);
   --button-bg-color: var(--button-invert-color);
   --button-bg-color-hover: var(--button-invert-color);
   --button-border-color: var(--button-invert-color);
@@ -31,12 +28,14 @@
   --button-disabled-opacity: 0.6;
   --button-font-case: initial;
   --button-font-weight: 500;
-  --button-height: 36px;
+  --button-height: 44px;
   --button-inline-spacing: 0;
-  --button-padding-x: 1em;
-
+  --button-padding-x: 2em;
   --input-placeholder-color: theme(colors.text);
+}
 
+.Input,
+.Button {
   align-items: center;
   background-color: var(--button-bg-color);
   border-color: var(--button-border-color);
@@ -50,15 +49,20 @@
   font-weight: var(--button-font-weight);
   height: var(--button-height);
   line-height: 1;
-  letter-spacing: inherit; /* 1 */
   justify-content: center;
-  /* margin: 0; */ /* 2 */
+  /* margin: 0; */ /* 1 */
   padding: 0 var(--button-padding-x);
+  padding-bottom: calc((1 / 15) * 1em); /* 2 */
   position: relative;
   text-decoration: none;
   text-transform: var(--button-font-case);
   user-select: none;
-  padding-bottom: calc((2 / 15) * 1em); /* 3 */
+}
+@screen sm {
+  .Input,
+  .Button {
+    padding-bottom: calc((1 / 17) * 1em); /* 2 */
+  }
 }
 
 /*
@@ -111,6 +115,7 @@ button:disabled {
 
   Input
   Same styles as .Button with minor differences
+  1. Let inputs *input*…
 
  */
 
@@ -120,9 +125,9 @@ button:disabled {
   --button-border-width: 0;
   --button-box-shadow-color: theme(colors.brand.blue);
   --button-font-weight: 400;
-  --input-placeholder-color: theme(colors.text);
   /* unlike buttons, inputs are full width */
-  @apply cursor-text w-full leading-normal;
+  @apply w-full cursor-text leading-normal;
+  user-select: text; /* 1 */
 }
 
 .Input::placeholder {
@@ -134,11 +139,23 @@ button:disabled {
 .Input,
 .Form .Button {
   --button-border-radius: 0;
-  --button-height: 44px;
+  --button-height: 48px;
 }
 /* …but not for textareas */
 textarea.Input {
   height: auto;
+}
+
+/*
+  Button typography class
+  …for use within form elements
+ */
+.Form-element,
+.Form textarea {
+  font-weight: var(--button-font-weight);
+  text-transform: var(--button-font-case);
+  color: var(--button-color);
+  line-height: 1;
 }
 
 /*
@@ -187,8 +204,9 @@ textarea.Input {
   variations
  */
 
-.Button--blue {
-  --button-invert-color: theme(colors.brand.blue);
+.Button--brand {
+  --button-color: theme(colors.white);
+  --button-invert-color: theme(colors.brand.primary);
 }
 
 .Button--white {
@@ -196,9 +214,18 @@ textarea.Input {
   --button-invert-color: theme(colors.white);
 }
 
+/* inverse, invisible & outlines… */
+
+.Button--inverse {
+  --button-color: theme(colors.brand.highlight);
+  --button-invert-color: theme(colors.black);
+}
+
 .ButtonComplex .Button--outline,
+.ButtonComplex .Button--invisible,
 .Button--outline,
 .Button--invisible {
+  --button-invert-color: theme(colors.text);
   --button-color: theme(colors.text);
   --button-bg-color: transparent;
   --button-bg-color-hover: transparent;
@@ -206,18 +233,22 @@ textarea.Input {
 
 .Button--invisible {
   --button-border-color: transparent;
+  --button-invert-color: transparent;
 }
 
-.Button--whiteOutline {
+[class*="Button--outline-"] {
+  --button-bg-color: transparent;
+  --button-bg-color-hover: transparent;
+}
+.Button--outline-white {
   --button-color: white;
   --button-invert-color: white;
-  background-color: rgba(0,0,0,0.2);
 }
-
-.Button--whiteOutline:hover,
-.Button--whiteOutline:focus,
-.Button--whiteOutline:active {
-  /* --button-box-shadow-color: white; */
-  background-color: rgba(0,0,0,0.5);
+.Button--outline-red {
+  --button-color: theme(colors.brand.red);
+  --button-invert-color: theme(colors.brand.red);
 }
-
+.Button--outline-blue {
+  --button-color: theme(colors.brand.blue);
+  --button-invert-color: theme(colors.brand.blue);
+}
