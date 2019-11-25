@@ -1,0 +1,53 @@
+/*
+
+  Custom styling for:
+  - https://github.com/eddiemf/vue-affix
+  - https://github.com/eddiemf/vue-scrollactive
+
+  1. potential mobile styling, turned off for now
+  2. provided :offset isn't responsive
+
+ */
+
+.Affix {
+  @apply hidden;
+  @apply bg-brand-bluegray p-3 w-full; /* 1 */
+  @apply z-10;
+  transition: padding 500ms theme(bezier.thisalso);
+}
+.Affix.affix {
+  @apply fixed !important; /* 2 */
+  @apply top-0 !important;
+}
+@media (max-width: 512px) {
+  .Affix.affix {
+    @apply p-6 top-0;
+  }
+}
+@screen md {
+  .Affix {
+    @apply block absolute !important;
+    @apply bg-transparent;
+    @apply p-0;
+    @apply w-auto;
+  }
+  .Affix.affix {
+    padding-top: calc(theme(spacing.40) * var(--block-size-ratio));
+  }
+}
+
+/*
+
+  Scroll active item
+
+ */
+
+.scrollactive-item {
+  @apply relative;
+}
+.scrollactive-item.is-active:before {
+  @apply relative inline-block;
+  content: "——";
+  letter-spacing: -0.1em;
+  transform: translateY(-2px);
+}

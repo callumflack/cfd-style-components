@@ -1,0 +1,145 @@
+/*
+
+  vue-select styling
+  https://vue-select.org/
+
+ */
+.Select {
+  --select-text-color: black;
+  --select-border-color: black;
+  --select-bg-color: white;
+  --select-highlight-color: theme(colors.brand.highlight);
+  @apply mt-4 mb-4;
+}
+@screen lg {
+  .Select {
+    @apply mt-8 mb-16;
+  }
+}
+.Select .v-select {
+  --button-height: 54px;
+  --icon-height: 50px;
+}
+/* States */
+.Select .vs--single .vs__selected {
+  /* background-color: transparent; */
+  border-color: transparent;
+  color: var(--select-text-color);
+}
+.Select .vs--single.vs--open .vs__selected {
+  @apply relative opacity-100;
+}
+.Select .vs--single.vs--open .vs__search {
+  @apply opacity-0;
+}
+/* .Select .vs--single .vs--searching .vs__selected {
+  display: none;
+} */
+/*
+
+  CURSOR
+
+ */
+.Select .vs__search,
+.Select .vs__dropdown-option,
+.Select .vs__selected,
+.Select .vs__actions {
+  @apply cursor-pointer;
+}
+/*
+
+  TYPOGRAPHY:
+  1. same as form label
+  2. same as .Input but via theme-form font-size…
+
+ */
+.Select .vs__search,
+.Select .vs__dropdown-option {
+  /* 1 */
+  @apply font-serif italic font-normal;
+  @apply normal-case leading-normal tracking-body;
+  color: var(--select-text-color);
+  font-size: calc(theme(fontSize.md) * var(--text-ratio));
+}
+.Select .vs__selected {
+  /* 2 */
+  @apply font-sans font-normal;
+  @apply leading-snug tracking-wide;
+  font-size: calc(theme(fontSize.lg) * var(--text-ratio));
+}
+
+/*
+
+  SEARCH/TOGGLE BOX
+  .vs__dropdown-toggle
+    .vs__selected-option
+      .vs__selected
+      .vs__search
+
+ */
+.Select .vs__dropdown-toggle {
+  @apply border-2 rounded-none;
+  @apply p-0;
+  background-color: var(--select-bg-color);
+  border-color: var(--select-border-color);
+  height: var(--button-height);
+}
+.Select .vs--open .vs__dropdown-toggle {
+  @apply border-b-2;
+  border-color: var(--select-border-color);
+}
+.Select .vs__selected-options {
+  @apply p-0;
+  @apply border-r-2;
+  border-color: var(--select-border-color);
+}
+.Select .vs__search,
+.Select .vs__search:focus,
+.Select .vs__selected {
+  @apply m-0 p-0 ml-3;
+}
+/*
+
+  ACTIONS BOX WITHIN TOGGLE BOX (SVG ICONS)
+
+ */
+.Select .vs__actions {
+  @apply justify-center p-0;
+  width: var(--icon-height);
+  /* icon wrapper */
+  display: inline-block;
+  color: inherit;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
+}
+.Select .vs__clear svg,
+.Select .vs__open-indicator {
+  fill: var(--select-text-color);
+  /* transform: scale(1.25); */
+  /* svg icon */
+  width: var(--icon-height);
+  height: var(--icon-height);
+}
+.Select .vs__clear {
+  @apply mr-3;
+}
+/*
+
+  OPTIONS LIST
+
+ */
+.Select .vs__dropdown-menu {
+  @apply shadow-none border-2;
+  background-color: var(--select-bg-color);
+  border-color: var(--select-border-color);
+  border-top-style: none;
+  top: 100%;
+}
+.Select .vs__dropdown-option--highlight {
+  /* @apply text-black bg-brand-highlight; */
+  background-color: var(--select-highlight-color);
+  color: var(--select-text-color);
+}
+
+
